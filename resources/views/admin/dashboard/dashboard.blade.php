@@ -66,7 +66,7 @@ hold-transition skin-blue sidebar-mini
 				    <a href="{{apa('farm-manager')}}">
 						<div class="d-inline-block">
 						<h5 class="text-muted">Total Farms</h5>
-						<h2 class="mb-0"> {{$farms_count}}</h2>
+						<h2 class="mb-0"> 0</h2>
 						</div>
 						<div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
 						<i class="fa fa-handshake fa-fw fa-sm text-secondary"></i>
@@ -81,7 +81,7 @@ hold-transition skin-blue sidebar-mini
 				    <a href="{{apa('farm-manager?status=1')}}">
 						<div class="d-inline-block">
 						<h5 class="text-muted">Approved Farms </h5>
-						<h2 class="mb-0"> {{ @$approved_farm_count}}</h2>
+						<h2 class="mb-0">0</h2>
 						</div>
 						<div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
 						<i class="fa fa-shopping-bag fa-fw fa-sm text-secondary"></i>
@@ -96,7 +96,7 @@ hold-transition skin-blue sidebar-mini
 				    <a href="{{apa('farm-manager?status=2&listing-completed=1')}}">
 						<div class="d-inline-block">
 						<h5 class="text-muted">Farms waiting Approval</h5>
-						<h2 class="mb-0"> {{ @$pending_for_approval_count}}</h2>
+						<h2 class="mb-0">0</h2>
 						</div>
 						<div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
 						<i class="fa fa-home fa-fw fa-sm text-secondary"></i>
@@ -112,7 +112,7 @@ hold-transition skin-blue sidebar-mini
 				   <a href="{{apa('users')}}">
 						<div class="d-inline-block">
 						<h5 class="text-muted">Users</h5>
-						<h2 class="mb-0"> {{ @$users_count}}</h2>
+						<h2 class="mb-0"> 0</h2>
 						</div>
 						<div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
 						<i class="fa fa-user fa-fw fa-sm text-primary"></i>
@@ -127,7 +127,7 @@ hold-transition skin-blue sidebar-mini
 				   <a href="{{apa('order-list')}}">
 						<div class="d-inline-block">
 						<h5 class="text-muted">Total Orders</h5>
-						<h2 class="mb-0"> {{ @$order_count}}</h2>
+						<h2 class="mb-0">0</h2>
 						</div>
 						<div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
 						<i class="fa fa-user fa-fw fa-sm text-primary"></i>
@@ -157,7 +157,7 @@ hold-transition skin-blue sidebar-mini
 				   <a href="{{apa('contact-request')}}">
 						<div class="d-inline-block">
 						<h5 class="text-muted">New Contact Request(s)</h5>
-						<h2 class="mb-0"> {{ @$contact_count}}</h2>
+						<h2 class="mb-0"> 0</h2>
 						</div>
 						<div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
                             <p style="color:#000">since last login</p>
@@ -168,35 +168,7 @@ hold-transition skin-blue sidebar-mini
 		</div>
         
 	</div>
-	@if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Notifications']))
-	<div class="row">
-			<div class="col-12 col-xl-12 mb-12">
-				<div class="card crystal-border-light crystal-shadow">
-					<div class="card-header d-flex">
-						<h4 class="card-header-title">Recent Activities</h4>
-						<div class="toolbar ml-auto">
-							<a href="{{apa('user-notification')}}" class=" btn btn-outline-primary btn-sm ">View All</a>
-						</div>
-					</div>
-					<div class="card-body">
-						<!-- <h6 class="heading-title pl-3 position-relative">Recent Activities  <a href="" class="btn btn-outline-secondary pull-right"></a></h6> -->
-						@foreach($userNotifications as $notification)
-						<div class="media d-sm-flex d-block text-center text-sm-left mb-4">
-							<div class="d-sm-flex mr-sm-2 mb-3 mb-sm-0"><img class="user-avatar-md rounded-circle" src="{{ get_profile_image($notification->fromuserDetails->user_avatar) }}"></div>
-							<div class="media-body crystal-line-height-1">
-								<h6 class="mb-0 font-weight-normal"><strong>{{$notification->fromuserDetails->user_full_name}} : </strong>{!!$notification->un_description!!}</h6>
-								<small>{{$notification->getTimedate()}}</small>
-							</div>
-						</div>
-						@endforeach
-						
-					</div>
-					
-				</div>
-				
-			</div>
-      </div>
-	  @endif
+	
 </div>
 
 @stop

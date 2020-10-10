@@ -1,0 +1,250 @@
+<div class="nav-left-sidebar sidebar-dark">
+    <div class="menu-list">
+        <nav class="navbar navbar-expand-lg navbar-light"> 
+            <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-divider">
+                        Menu
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ get_admin_menu_active_class($currentURI,['dashboard']) }}" href="{{ apa('dashboard') }}"><i class="fas fa-chart-pie"></i>Dashboard</a>
+                    </li>
+                    @if(Auth::user() && Auth::user()->hasAnyPermission(['Menu Manager']))
+                    <li class="nav-item">
+                        <a class="nav-link {{ get_admin_menu_active_class($currentURI,['menu_manager']) }}" href="{{ apa('menu_manager') }}">
+                            <i class="fas fa-chart-pie"></i>Menu Manager
+                        </a>
+                    </li>
+                    @endif
+
+                    @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Agriculture','Manage Banner','Manage Agriculture Types','Manage Facilities','Manage Irrigation','Manage Irrigation Sources','Mange Category Manager','Manage Country','Manage Soils','Manage Growth List','farm-package-type']))
+                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['banners']) }}" href="{{ apa('post/banners') }}"><i class="fas fa-image"></i>{{ lang('banners') }}</a>
+                    
+                    <li class="nav-item ">
+                        <a class="nav-link  collapsed" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Master Records</a>
+                        <div id="submenu-1" class="submenu collapse" style="">
+                            <ul class="nav flex-column">
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Agriculture']))	
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['agriculture_manager']) }}" href="{{ apa('agriculture_manager') }}"><i class="fas fa-chart-pie"></i>Manage Agriculture/Crop</a>
+                                </li>
+                                @endif
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Agriculture Types']))
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['agriculture_type']) }}" href="{{ apa('agriculture_type') }}"><i class="fas fa-chart-pie"></i>Agriculture Type</a>
+                                </li>
+                                @endif
+
+                               
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Irrigation']))
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['irrigation']) }}" href="{{ apa('irrigation') }}"><i class="fas fa-chart-pie"></i>Irrigation Type</a>
+                                </li>
+                                @endif
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Irrigation Sources']))
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['irrigation-source']) }}" href="{{ apa('irrigation-source') }}"><i class="fas fa-chart-pie"></i>Irrigation Source</a>
+                                </li>
+                                @endif
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Mange Category Manager']))
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['category_manager']) }}" href="{{ apa('category_manager') }}"><i class="fas fa-chart-pie"></i>Category Manager</a>
+                                </li>
+                                @endif
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Mange Farming Category']))
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['farming-category']) }}" href="{{ apa('farming-category') }}"><i class="fas fa-chart-pie"></i>Farming Category</a>
+                                </li>
+                                @endif
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Mange Farming Category']))
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['farming-category-attributes']) }}" href="{{ apa('farming-category-attributes') }}"><i class="fas fa-chart-pie"></i>Quick facts</a>
+                                </li>
+                                @endif
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Farming Architecture']))
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['farming-architecture']) }}" href="{{ apa('farming-architecture') }}"><i class="fas fa-chart-pie"></i>Farming Architecture</a> 
+                                </li>
+                                @endif
+                                 @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Facilities']))
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['facility_manager']) }}" href="{{ apa('facility_manager') }}"><i class="fas fa-chart-pie"></i>Facilities Manager</a>
+                                </li>
+                                @endif
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Country']))
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['country']) }}" href="{{ apa('country') }}"><i class="fas fa-chart-pie"></i>Country</a>
+                                </li>
+                                @endif
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Soils']))								
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['soil']) }}" href="{{ apa('soil') }}"><i class="fas fa-chart-pie"></i>Soil</a>
+                                </li>
+                                @endif	
+                                <?php /*
+                                  @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Growth List']))
+                                  <li class="nav-item">
+                                  <a class="nav-link {{ get_admin_menu_active_class($currentURI,['growth_stages']) }}" href="{{ apa('growth_stages') }}"><i class="fas fa-chart-pie"></i>Growth Stages</a>
+                                  </li>
+                                  @endif
+
+                                  @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Package Settings']))
+                                  <li class="nav-item">
+                                  <a class="nav-link {{ get_admin_menu_active_class($currentURI,['commission-settings']) }}" href="{{ apa('commission-settings') }}"><i class="fas fa-chart-pie"></i>Commission Settings</a>
+                                  </li>
+                                  @endif
+
+                                  @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Delivery Settings']))
+                                  <li class="nav-item">
+                                  <a class="nav-link {{ get_admin_menu_active_class($currentURI,['delivery-settings']) }}" href="{{ apa('delivery-settings') }}"><i class="fas fa-chart-pie"></i>Delivery Settings</a>
+                                  </li>
+                                  @endif
+                                 */ ?>
+                            </ul>
+                        </div>
+                    </li>
+                    @endif
+                    @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage About Us','Manage Faq','Manage Privacy Policy','Manage Collection Schedule','Manage Farm Todo List','Manage Farm','Manage Farm Subscriptions','Manage Delivery Schedule','Manage Admin Users List','Manage Employee','Manage Users']))
+                    <li class="nav-item ">
+                        <a class="nav-link  collapsed" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-user-circle"></i>CMS</a>
+                        <div id="submenu-2" class="submenu collapse" style="">
+                            <ul class="nav flex-column">
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage About Us']))
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['about_us']) }}" href="{{ apa('post/about_us') }}"><i class="fas fa-chart-pie"></i>About Us</a>
+                                </li>
+                                @endif
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Faq']))
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['faq']) }}" href="{{ apa('post/faq') }}"><i class="fas fa-chart-pie"></i>FAQ</a>
+                                </li>
+                                @endif 
+                                <?php /* @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Privacy Policy']))
+                                  <li class="nav-item">
+                                  <a class="nav-link {{ get_admin_menu_active_class($currentURI,['privacy_policy']) }}" href="{{ apa('post/privacy_policy') }}"><i class="fas fa-chart-pie"></i>Privacy Policy</a>
+                                  </li>
+                                  @endif
+                                  @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Farm Todo List']))
+                                  <li class="nav-item">
+                                  <a class="nav-link {{ get_admin_menu_active_class($currentURI,['farm-todo-list']) }}" href="{{ route('farm-todo-list') }}"><i class="fas fa-chart-pie"></i>Farm Todo List </a>
+                                  </li>
+                                  @endif */ ?>
+
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Farm']))
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['farm-manager']) }}" href="{{ apa('farm-manager') }}"><i class="fas fa-chart-pie"></i>Farm Manager</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['deactivation-requests']) }}" href="{{ apa('deactivation-requests') }}"><i class="fas fa-chart-pie"></i>Farm Deactivation Requests</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['farmer-suggested-crops']) }}" href="{{ apa('farmer-suggested-crops') }}"><i class="fas fa-chart-pie"></i>Farmer Suggested Crops</a>
+                                </li>
+                                @endif
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Farm Reviews']))
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['farm-review']) }}" href="{{ apa('farm-review') }}"><i class="fas fa-chart-pie"></i>Farm Reviews</a>
+                                </li>
+                                @endif @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Product Reviews']))
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['product-review']) }}" href="{{ apa('product-review') }}"><i class="fas fa-chart-pie"></i>Product Reviews</a>
+                                </li>
+                                @endif
+
+                                <?php /* @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Farm Package']))
+                                  <li class="nav-item">
+                                  <a class="nav-link {{ get_admin_menu_active_class($currentURI,['farm-package']) }}" href="{{ apa('farm-package') }}"><i class="fas fa-chart-pie"></i>Manage Farm Package</a>
+                                  </li>
+                                  @endif
+                                  @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Farm Subscriptions']))
+                                  <li class="nav-item">
+                                  <a class="nav-link {{ get_admin_menu_active_class($currentURI,['farm_subscriptions']) }}" href="{{ apa('farm_subscriptions') }}"><i class="fas fa-chart-pie"></i>Farm Subscriptions</a>
+                                  </li>
+                                  @endif
+                                  @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Package Action History']))
+                                  <li class="nav-item">
+                                  <a class="nav-link {{ get_admin_menu_active_class($currentURI,['package-history']) }}" href="{{ apa('package-history') }}"><i class="fas fa-chart-pie"></i>Package Action History</a>
+                                  </li>
+                                  @endif
+                                  @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Package Subscriptions']))
+                                  <li class="nav-item">
+                                  <a class="nav-link {{ get_admin_menu_active_class($currentURI,['package-subscriptions-list']) }}" href="{{ apa('package-subscriptions-list') }}"><i class="fas fa-chart-pie"></i>Package Subscriptions</a>
+                                  </li>
+                                  @endif
+
+                                  @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Delivery Schedule']))
+                                  <li class="nav-item">
+                                  <a class="nav-link {{ get_admin_menu_active_class($currentURI,['delivery_schedule']) }}" href="{{ apa('delivery_schedule') }}"><i class="fas fa-chart-pie"></i>Delivery Schedule</a>
+                                  </li>
+                                  @endif */ ?>
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Admin Users List']))	
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['admin_users']) }}" href="{{ apa('admin_users') }}"><i class="fas fa-chart-pie"></i>Admin Users</a>
+                                </li>
+                                @endif
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Employee']))						
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['employee']) }}" href="{{ route('employee') }}"><i class="fas fa-chart-pie"></i>Employees</a>
+                                </li>	
+                                @endif
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Users']))					
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['users']) }}" href="{{ apa('users') }}"><i class="fas fa-chart-pie"></i>Users</a>
+                                </li>
+                                @endif
+
+                            </ul>
+                        </div>
+                    </li>
+                    @endif
+                    @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Order','Manage Delivery']))
+                    <li class="nav-item ">
+                        <a class="nav-link  collapsed" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Orders and Delivery</a>
+                        <div id="submenu-3" class="submenu collapse" style="">
+                            <ul class="nav flex-column">
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Order']))	
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['order-list']) }}" href="{{ apa('order-list') }}"><i class="fas fa-chart-pie"></i>Manage Order</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['farm-orders','farms-order-list']) }}" href="{{ apa('farm-orders') }}"><i class="fas fa-chart-pie"></i>Manage Farm wise orders</a>
+                                </li>
+                                @endif
+                                @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Delivery']))	
+                                <li class="nav-item">
+                                    <a class="nav-link {{ get_admin_menu_active_class($currentURI,['delivery-list']) }}" href="{{ apa('delivery-list') }}"><i class="fas fa-chart-pie"></i>Manage Delivery</a>
+                                </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </li>
+                    @endif
+                    @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Permissions']))	
+                    <li class="nav-item">
+                        <a class="nav-link {{ get_admin_menu_active_class($currentURI,['permissions']) }}" href="{{ apa('permissions') }}"><i class="fas fa-chart-pie"></i>Permissions</a>
+                    </li>
+                    @endif 
+                    @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Roles']))	
+                    <li class="nav-item">
+                        <a class="nav-link {{ get_admin_menu_active_class($currentURI,['roles']) }}" href="{{ apa('roles') }}"><i class="fas fa-chart-pie"></i>Roles</a>
+                    </li>
+                    @endif	
+                    @if(Auth::user() && Auth::user()->hasAnyPermission(['Manage Settings']))
+                    <li class="nav-item">
+                        <a class="nav-link {{ get_admin_menu_active_class($currentURI,['setting']) }}" href="{{ apa('setting') }}"><i class="fas fa-chart-pie"></i>Setting</a>
+                    </li>   
+                    @endif					
+
+
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>

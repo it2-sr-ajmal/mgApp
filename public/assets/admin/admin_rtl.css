@@ -1,0 +1,64 @@
+html[dir=rtl] body {
+  text-align: right;
+  direction: rtl; }
+  html[dir=rtl] body * {
+    letter-spacing: 0; }
+html[dir=rtl] .ml-auto, html[dir=rtl] .mx-auto {
+  margin-right: auto !important;
+  margin-left: initial !important; }
+html[dir=rtl] .nav-left-sidebar {
+  right: 0; }
+  html[dir=rtl] .nav-left-sidebar .navbar-nav {
+    padding: 0; }
+    html[dir=rtl] .nav-left-sidebar .navbar-nav .nav-divider {
+      text-align: right; }
+    html[dir=rtl] .nav-left-sidebar .navbar-nav .nav-link {
+      text-align: right; }
+      html[dir=rtl] .nav-left-sidebar .navbar-nav .nav-link i {
+        margin-left: 9px;
+        margin-right: 0; }
+html[dir=rtl] .dashboard-wrapper {
+  margin-right: 264px;
+  margin-left: 0; }
+  @media only screen and (max-width: 768px) {
+    html[dir=rtl] .dashboard-wrapper {
+      margin-right: 0; } }
+html[dir=rtl] .dropdown-menu {
+  text-align: right; }
+html[dir=rtl] .dropdown-menu-right {
+  left: 0;
+  right: auto; }
+html[dir=rtl] .badge-dot {
+  margin-left: 3px;
+  margin-right: 0; }
+html[dir=rtl] .mr-2, html[dir=rtl] .mx-2 {
+  margin-left: 0.5rem !important;
+  margin-right: initial !important; }
+html[dir=rtl] .btn-group, html[dir=rtl] .btn-group-vertical {
+  flex-direction: row-reverse; }
+html[dir=rtl] .table-responsive .flagWrapper > span:first-child {
+  margin-left: 10px;
+  margin-right: 0; }
+html[dir=rtl] .table-responsive .entityWrapper > a[data-fancybox] {
+  margin-left: 9px;
+  margin-right: 0; }
+html[dir=rtl] .float-right {
+  float: left !important; }
+html[dir=rtl] .float-left {
+  float: right !important; }
+html[dir=rtl] .navbar-nav {
+  padding: 0; }
+html[dir=rtl] table.bt tfoot th, html[dir=rtl] table.bt tfoot td, html[dir=rtl] table.bt tbody td {
+  flex-direction: row-reverse; }
+@media (max-width: 767px) {
+  html[dir=rtl] .btn-group, html[dir=rtl] .btn-group-vertical {
+    flex-direction: column; }
+  html[dir=rtl] table.bt tfoot th, html[dir=rtl] table.bt tfoot td, html[dir=rtl] table.bt tbody td {
+    flex-direction: column; } }
+@media (min-width: 576px) {
+  html[dir=rtl] .float-sm-right {
+    float: left !important; }
+  html[dir=rtl] .float-sm-left {
+    float: right !important; } }
+
+/*# sourceMappingURL=admin_rtl.css.map */

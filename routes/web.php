@@ -14,8 +14,8 @@
 
 // Admin login route
 Route::group(['prefix' => Config::get('app.admin_prefix'), 'namespace' => 'Admin'], function () {
-	Route::match(array('GET', 'POST'), '/', 'LoginController@index')->name('admin_login');
-	Route::match(array('GET', 'POST'), '/login', 'LoginController@index')->name('admin_login_login');
+	
+	Route::match(array('GET', 'POST'), '/login', 'LoginController@index')->name('admin-login');
 	Route::match(array('GET', 'POST'), '/create', array('uses' => 'LoginController@create_admin_account'));
 });
 Route::group(['prefix' => Config::get('app.admin_prefix'), 'namespace' => 'Admin', 'middleware' => ['adminAuth', 'IsAdmin']], function () {
@@ -91,6 +91,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::fallback(function () {
 	return redirect()->to('/page-not-found');
