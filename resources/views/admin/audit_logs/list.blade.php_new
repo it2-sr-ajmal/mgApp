@@ -1,0 +1,116 @@
+@extends('admin.layouts.master')
+@section('styles')
+@parent
+@stop
+@section('content')
+@section('bodyClass')
+@parent 
+hold-transition skin-blue sidebar-mini
+@stop
+<div class="container-fluid dashboard-content">
+   <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+         <div class="page-header">
+            <h2 class="pageheader-title">Log Entries</h2>
+         </div>
+		 </div>
+   </div>
+   <div>
+     
+   </div>
+   <div class="row">
+      <div class="col-sm-12">
+         @include('admin.common.user_message')
+      </div>
+      <!-- ============================================================== -->
+      <!-- striped table -->
+      <!-- ============================================================== -->
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+         <div class="card">
+            <div class="col-sm-12 card-header my-table-header">
+               <div class="row align-items-center">
+                  <div class="col-sm-6">
+                     <h5 class="">{{ $auditList->total() }} entries found.</h5>
+                  </div>
+                  <?php /*<div class="col-sm-6"><h5 class="text-right">Showing {{ $hubList->currentPage() }} of {{  $hubList->total() }} pages</h5></div> */ ?>
+               </div>
+            </div>
+            <div class="card-body">
+               <div class="table-responsive">	
+						
+						<?php  if(count($auditList)>0){ ?>												
+							<table id="members1" class="table table-bordered table-hover">
+							 <thead class="thead-dark">
+								<tr>
+									<th>Model</th>
+									<th>Action</th>
+									<th>User</th>
+									<th>Time</th>
+									<th>Old Values</th>       
+									<th>New Values</th>
+									<th>Url</th>
+									<th>Ip_adrress</th>       
+									<th>Navegador</th>                       
+								</tr>
+							</thead>								
+								<tbody>	
+								<?php 
+									$inc=getPaginationSerial($auditList);
+								?>
+										 @foreach($auditList as $audit)                        
+										<tr>
+											<td>{{ $audit->auditable_type }} (id: {{ $audit->auditable_id }})</td>
+											<td>{{ $audit->event }}</td>
+											<td>{{ $audit->user->user_full_name }}</td>
+											<td>{{ $audit->created_at }}</td>                            
+											<td>
+												<table class="table table-bordered table-hover" style="width:100%">
+													@foreach($audit->old_values as $attribute  => $value)                                 
+														<tr>
+															<td><b>{{ $attribute  }}</b></td>
+															<td>{{ $value }}</td>
+														</tr>                                  
+													@endforeach
+												</table>
+											</td>                    
+											<td>
+												<table class="table table-bordered table-hover" style="width:100%">
+													@foreach($audit->new_values as  $attribute  => $data)
+														<tr>
+															<td><b>{{  $attribute  }}</b></td>
+															<td>{{ $value }}</td>
+														</tr>
+													@endforeach
+												</table>
+											</td>
+											<td>{{ $audit->url }}</td>
+											<td>{{ $audit->ip_address }}</td>
+											<td>{{ $audit->user_agent }}</td>                                              
+										</tr>
+									@endforeach
+										<tr><td colspan="5">{{ $auditList->links() }}</td></tr>
+								   </tbody>                            
+							</table>							
+							<?php }else{ ?>
+							<div class="row col-sm-12">
+								<div class="alert alert-danger alert-dismissable">
+									<i class="fa fa-ban"></i>
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<b>Alert!</b> No Records Found!.  
+								</div>  
+							</div>  
+							<?php } ?>
+				 </div>
+            </div>
+         </div>
+      </div>
+      <!-- ============================================================== -->
+      <!-- end striped table -->
+      <!-- ============================================================== -->
+   </div>
+</div>
+
+@stop
+@section('scripts')
+@parent
+@stop
